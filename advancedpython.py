@@ -218,7 +218,24 @@ def learnLambdaFunc():
     # acheive same using lambda
     print(list(map(lambda t: (t-32) * 5/9, ftemps)))
     print(list(map(lambda t: (t * 9/5) + 32 , ctemps)))
-
+# use keyword-only arguments to help ensure code clarity
+def myKeyWordOnly(arg1, arg2, *, suppressExceptions=False):
+    print(arg1, arg2, suppressExceptions)
+def keywordArgumentsOnly():
+    """keywordArguments() --> learn about keyword only arguments
+    def myFunction(arg1, arg2, arg3="foo")
+    myFunction(1, 2, arg3="bar")
+    sometimes we require the caller specify the keyword arguments
+    using keyword only, so the significance of parameter is 
+    understood
+    then define seperate your positional arguments from keyword only by *
+    def criticalFunc(arg1, suppressExec=False)
+    def criticalFunc(arg1, *, suppressExec=False)
+    """
+    # try to call the function without the keyword
+    # myKeyWordOnly(1, 2, True)
+    # myKeyWordOnly() takes 2 positional arguments but 3 were given
+    myKeyWordOnly(1, 2, suppressExceptions=True)
 if __name__ == "__main__":
     # stringsandbytes()
     # stringformating()
@@ -230,5 +247,7 @@ if __name__ == "__main__":
     # print(variablearguments(10, 10, 30))
     # myNums = [5, 10, 10, 10]
     # print(variablearguments(*myNums))
-    learnLambdaFunc()
+    # learnLambdaFunc()
+    keywordArgumentsOnly()
+
 
