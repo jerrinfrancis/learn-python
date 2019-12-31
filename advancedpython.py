@@ -183,6 +183,22 @@ def documentation(arg1, arg2=None):
     """
 
     print(arg1, arg2)
+def variablearguments(*args):
+    """variablearguments(*numbers)--> learning variable arguments 
+    the variable arguments must be the last of parameters
+    like def log_message(messageType, msg, *params)
+
+    Downside: if you want to add a new positional parameter
+    all the callers need to adjust f
+    for eg if i change addition(base, *numbers)
+    """
+    result = 0
+    for arg in args:
+        result += arg
+    return result
+def learnLambdaFunc():
+    """learnLambdaFunc() --> learn about lambda functions
+    """
 if __name__ == "__main__":
     # stringsandbytes()
     # stringformating()
@@ -190,4 +206,8 @@ if __name__ == "__main__":
     # iterationtesting()
     # transformation()
     # itertoolLearn()
-    print(documentation.__doc__)
+    # print(documentation.__doc__)
+    # print(variablearguments(10, 10, 30))
+    # myNums = [5, 10, 10, 10]
+    # print(variablearguments(*myNums))
+
