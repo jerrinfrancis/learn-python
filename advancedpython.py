@@ -196,9 +196,29 @@ def variablearguments(*args):
     for arg in args:
         result += arg
     return result
+def CelsisusToFahrenheit(temp):
+    return (temp * 9/5) + 32
+
+
+def FahrenheitToCelsisus(temp):
+    return (temp-32) * 5/9
+
 def learnLambdaFunc():
     """learnLambdaFunc() --> learn about lambda functions
+    small anonymous functions
+    Can be passed as arguments where you need a function
+    Typically used in place just when needed
+    Defined as :
+    lambda (parameters) : (expression)
     """
+    ctemps = [0, 12, 34, 100]
+    ftemps = [32, 65, 100, 212]
+    print(list(map(FahrenheitToCelsisus, ftemps)))
+    print(list(map(CelsisusToFahrenheit, ctemps)))
+    # acheive same using lambda
+    print(list(map(lambda t: (t-32) * 5/9, ftemps)))
+    print(list(map(lambda t: (t * 9/5) + 32 , ctemps)))
+
 if __name__ == "__main__":
     # stringsandbytes()
     # stringformating()
@@ -210,4 +230,5 @@ if __name__ == "__main__":
     # print(variablearguments(10, 10, 30))
     # myNums = [5, 10, 10, 10]
     # print(variablearguments(*myNums))
+    learnLambdaFunc()
 
