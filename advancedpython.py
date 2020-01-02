@@ -3,6 +3,8 @@ import itertools
 import collections
 from collections import defaultdict
 from collections import Counter
+from collections import OrderedDict
+
 def stringsandbytes():
     b = bytes([0x41, 0x42, 0x43, 0x44])
     print(b)
@@ -319,6 +321,41 @@ def learnCounter():
     print(c1.most_common(3))
     # find common between 2 classes
     print(c1 & c2)
+def learnOrderedDict():
+    """
+    downside of dictionary is that it is does not track of 
+    any order of items .
+    from collections import OrderedDict
+
+    orderedDict remembers order in which items are inserted
+    """
+     # list of sport teams with wins and losses
+    sportTeams = [("Royals", (18, 12)), ("Rockets", (24, 6)), 
+                ("Cardinals", (20, 10)), ("Dragons", (22, 8)),
+                ("Kings", (15, 15)), ("Chargers", (20, 10)), 
+                ("Jets", (16, 14)), ("Warriors", (25, 5))]
+    # sort
+    sportTeams = sorted(sportTeams, key=lambda t: t[1][0], reverse=True)
+    # create an ordered dictionary of the teams
+    teams = OrderedDict(sportTeams)
+    print(teams)
+    # note: orderdDict maintains the order in which teams where 
+    # inserted
+    # OrderedDict wont keep data sorted you have to do it
+    # manually
+    # Use popitem to remove the top item
+    tm, wl = teams.popitem(False)
+    print(f'Top team : {tm} {wl}')
+    # you can iterate over teams
+    for i, team in enumerate(teams, start=1):
+        print(i, team)
+        if i == 4:
+            break
+    # test for equality
+    # order has to be same for two orderdDict to be same
+    a = OrderedDict({"a": 1, "b": 2, "c": 3})
+    b = OrderedDict({"a": 1, "c": 3, "b": 2})
+    print("Equality test: ", a == b)
 
 
 
@@ -338,6 +375,7 @@ if __name__ == "__main__":
     # keywordArgumentsOnly()
     # namedTuple()
     # learndefdict()
-    learnCounter()
+    # learnCounter()
+    learnOrderedDict()
 
 
