@@ -1,6 +1,7 @@
 from string import Template
 import itertools
 import collections
+import string
 from collections import defaultdict
 from collections import Counter
 from collections import OrderedDict
@@ -353,10 +354,46 @@ def learnOrderedDict():
             break
     # test for equality
     # order has to be same for two orderdDict to be same
+    # incase of regular dict order does not matter 
     a = OrderedDict({"a": 1, "b": 2, "c": 3})
     b = OrderedDict({"a": 1, "c": 3, "b": 2})
     print("Equality test: ", a == b)
 
+def learnDeque():
+    """
+    deque is sort of hybrid object between stack and queue
+    it is Double ended queue pronounce as deck
+    you can use them to append or pop data from either side
+    and they are designed to be memory efficient
+
+    deque can be initialized to empty or to an existing 
+    iterable object and can specify maximum length
+
+    rotate() : positive number will rotate to right and 
+    negative to left
+    """
+    # intialize a deque
+    d = collections.deque(string.ascii_lowercase)
+    # deque support len 
+    print(f'Item Count : {str(len(d))}')
+    # support iteration
+    for elem in d:
+        print(elem.upper(), end=",")
+    # pop, append
+    print(d)
+    d.pop()
+    print(d)
+    d.popleft()
+    print(d)
+    d.append(2)
+    print(d)
+    d.appendleft(10)
+    print(d)
+    # rotate
+    print(d)
+    d.rotate(10)
+    print(d)
+    
 
 
 
@@ -376,6 +413,7 @@ if __name__ == "__main__":
     # namedTuple()
     # learndefdict()
     # learnCounter()
-    learnOrderedDict()
+    # learnOrderedDict()
+    learnDeque()
 
 
