@@ -2,6 +2,7 @@ from string import Template
 import itertools
 import collections
 from collections import defaultdict
+from collections import Counter
 def stringsandbytes():
     b = bytes([0x41, 0x42, 0x43, 0x44])
     print(b)
@@ -287,6 +288,38 @@ def learndefdict():
     for (k, v) in fruitCounter.items():
         print(f'{k} : {str(v)}')
 
+def learnCounter():
+    """
+    learn counter 
+    from collections import counter
+
+    """
+     # list of students in class 1
+    class1 = ["Bob", "James", "Chad", "Darcy", "Penny", "Hannah"
+              "Kevin", "James", "Melanie", "Becky", "Steve", "Frank"]
+
+    # list of students in class 2
+    class2 = ["Bill", "Barry", "Cindy", "Debbie", "Frank",
+              "Gabby", "Kelly", "James", "Joe", "Sam", "Tara", "Ziggy"]
+    # Create a Counter for class1 and class2
+    c1 = Counter(class1)
+    c2 = Counter(class2)
+    # How many students in class 1 named James?
+    print(c1['James'])
+    # How many students are in class 1?
+    print(sum(c1.values()))
+    # Combine the two classes
+    c1.update(c2)
+    print(sum(c1.values()), "students in class 1 and 2")
+    #find most common name in two classes
+    # top 3 names
+    print(c1.most_common(3))
+    # Seperate classes
+    c1.subtract(c2)
+    print(c1.most_common(3))
+    # find common between 2 classes
+    print(c1 & c2)
+
 
 
 
@@ -304,6 +337,7 @@ if __name__ == "__main__":
     # learnLambdaFunc()
     # keywordArgumentsOnly()
     # namedTuple()
-    learndefdict()
+    # learndefdict()
+    learnCounter()
 
 
