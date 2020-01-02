@@ -1,6 +1,7 @@
 from string import Template
 import itertools
 import collections
+from collections import defaultdict
 def stringsandbytes():
     b = bytes([0x41, 0x42, 0x43, 0x44])
     print(b)
@@ -252,6 +253,42 @@ def namedTuple():
     # use replace
     p1 = p1._replace(x=100)
     print(p1)
+def learndefdict():
+    """
+    from collections import defaultdict
+    Downsides:
+    Any key that you have not explicitly added to the dictionary
+    will be assigned a default value by the factory function
+    so it might not be probably right collections to use in case you want to check 
+    not added keys
+    """
+    # define a list of items that we want to count
+    fruits = ['apple', 'pear', 'orange', 'banana',
+              'apple', 'grape', 'banana', 'banana']
+    # use a dictionary to count each element
+    # fruitCounter = {}
+    # use in default dict
+    # the int is called factory function so that it initialized
+    # to that object
+    # you can have custom factory
+    # fruitCounter = defaultdict(int)
+    fruitCounter = defaultdict(lambda : 100)
+
+    for fruit in fruits:
+        # fruitCounter[fruit] += 1 # just this statement alone will result in error as it does not exist
+        # if fruit in fruitCounter.keys():
+        #     fruitCounter[fruit] += 1
+        # else: 
+        #     fruitCounter[fruit] = 1
+        # with default dict we can just have below line
+        fruitCounter[fruit] += 1 
+
+    
+    for (k, v) in fruitCounter.items():
+        print(f'{k} : {str(v)}')
+
+
+
 
 if __name__ == "__main__":
     # stringsandbytes()
@@ -266,6 +303,7 @@ if __name__ == "__main__":
     # print(variablearguments(*myNums))
     # learnLambdaFunc()
     # keywordArgumentsOnly()
-    namedTuple()
+    # namedTuple()
+    learndefdict()
 
 
