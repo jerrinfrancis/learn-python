@@ -1,5 +1,6 @@
 from string import Template
 import itertools
+import collections
 def stringsandbytes():
     b = bytes([0x41, 0x42, 0x43, 0x44])
     print(b)
@@ -236,6 +237,22 @@ def keywordArgumentsOnly():
     # myKeyWordOnly(1, 2, True)
     # myKeyWordOnly() takes 2 positional arguments but 3 were given
     myKeyWordOnly(1, 2, suppressExceptions=True)
+def namedTuple():
+    """
+    learn namedTuples
+    import collections module
+    it becomes easy to access the columns by names
+
+    """
+    Point = collections.namedtuple("Point", "x y")
+    p1 = Point(10, 20)
+    p2 = Point(20, 30)
+    print(p1, p2)
+    print(p1.x, p2.x)
+    # use replace
+    p1 = p1._replace(x=100)
+    print(p1)
+
 if __name__ == "__main__":
     # stringsandbytes()
     # stringformating()
@@ -248,6 +265,7 @@ if __name__ == "__main__":
     # myNums = [5, 10, 10, 10]
     # print(variablearguments(*myNums))
     # learnLambdaFunc()
-    keywordArgumentsOnly()
+    # keywordArgumentsOnly()
+    namedTuple()
 
 
