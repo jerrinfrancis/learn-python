@@ -3,6 +3,7 @@ import itertools
 import collections
 from collections import defaultdict
 from collections import Counter
+from enum import Enum, unique, auto
 def stringsandbytes():
     b = bytes([0x41, 0x42, 0x43, 0x44])
     print(b)
@@ -319,6 +320,41 @@ def learnCounter():
     print(c1.most_common(3))
     # find common between 2 classes
     print(c1 & c2)
+@unique
+class Fruit(Enum):
+    """
+    from enum import Enum is done to get enumeration class
+    cannot have duplicate names for eg APPLE = 6 along with 1
+    error: Attempted to reuse key
+    But can have duplicate values.
+    To prevent unique values you can have unique decorators
+    from enum import unique
+
+    If you dont care what the value is you can auto assign using
+    auto code
+    from enum import auto
+    """
+    APPLE = 1
+    BANANA = 2
+    ORANGE = 3
+    TOMATO = 4
+    PEAR = auto()
+    # APPLE = 6 this will be duplicate key error
+    # CHERRY = 1 #again error if unique decorator is used
+
+def learnEnum():
+    print(Fruit.APPLE)
+    print(type(Fruit.APPLE))
+    print(repr(Fruit.APPLE))
+    # enums have both name and value
+    print(Fruit.APPLE.name, Fruit.APPLE.value)
+    # from auto
+    print(Fruit.PEAR.value)
+    # enums are hashable and can be used as keys
+    myFruits = {}
+    myFruits[Fruit.BANANA] = "Testing Enum as hashable keys"
+    print(myFruits[Fruit.BANANA])
+
 
 
 
@@ -338,6 +374,7 @@ if __name__ == "__main__":
     # keywordArgumentsOnly()
     # namedTuple()
     # learndefdict()
-    learnCounter()
+    # learnCounter()
+    # learnEnum()
 
 
