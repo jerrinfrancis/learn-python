@@ -355,7 +355,26 @@ def learnEnum():
     myFruits[Fruit.BANANA] = "Testing Enum as hashable keys"
     print(myFruits[Fruit.BANANA])
 
-
+class Person():
+    def __init__(self):
+        self.fname = 'Jerrin'
+        self.lname = 'Francis'
+        self.age = 10
+    def __repr__(self):
+        return f'<Person Class fname:{self.fname} lname: {self.lname} age: {self.age}'
+    def __str__(self):
+        return f'Person ({self.fname} {self.lname} is {self.age})'
+    def __bytes__(self):
+        val = "Person:{0}:{1}:{2}".format(self.fname,
+        self.lname, self.age)
+        return bytes(val.encode('utf-8'))
+def learnStringReprOfObjects():
+    cls1 = Person()
+    # without overridding the string repr
+    print(str(cls1))
+    print(repr(cls1))
+    print(f'Formatted: {cls1}')
+    print(bytes(cls1))
 
 
 
@@ -376,5 +395,6 @@ if __name__ == "__main__":
     # learndefdict()
     # learnCounter()
     # learnEnum()
+    learnStringReprOfObjects()
 
 
