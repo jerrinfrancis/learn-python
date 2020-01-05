@@ -375,6 +375,47 @@ def learnStringReprOfObjects():
     print(repr(cls1))
     print(f'Formatted: {cls1}')
     print(bytes(cls1))
+class myColor():
+    def __init__(self):
+        self.red = 50
+        self.green = 75
+        self.blue = 100
+    def __getattr__(self, attr):
+        if attr == "rgbcolor":
+            return (self.red, self.green, self.blue)
+        elif attr == "hexcolor":
+            return "#{0:02x}{1:02x}{2:02x}".format(
+                self.red, self.green,self.blue
+                )
+        else:
+            raise AttributeError
+    def __setattr__(self, attr, val):
+        if attr == "rgbcolor":
+            self.red = val[0]
+            self.green = val[1]
+            self.blue = val[2]
+        else:
+            # make sure to have this 
+            super().__setattr__(attr, val)
+    # use dir to list the available properties
+    def __dir__(self):
+        return ("red","green", "blue","rgbolor", "hexcolor")
+
+def learnComputedAttr():
+    cls1 = myColor()
+    # print a computed attribute
+    print(cls1.rgbcolor)
+    print(cls1.hexcolor)
+    # set attribute
+    cls1.rgbcolor = (20, 40, 100)
+    print(cls1.rgbcolor)
+    print(cls1.hexcolor)
+    # regular attribute
+    print(cls1.red)
+    # check dir functionality
+    print(dir(cls1))
+
+    
 
 
 
@@ -395,6 +436,7 @@ if __name__ == "__main__":
     # learndefdict()
     # learnCounter()
     # learnEnum()
-    learnStringReprOfObjects()
+    # learnStringReprOfObjects()
+    learnComputedAttr()
 
 
