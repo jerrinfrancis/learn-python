@@ -4,6 +4,7 @@ import collections
 from collections import defaultdict
 from collections import Counter
 from enum import Enum, unique, auto
+import logging
 def stringsandbytes():
     b = bytes([0x41, 0x42, 0x43, 0x44])
     print(b)
@@ -477,6 +478,32 @@ def learnComparisonOps():
         print(emp.lname)
 
 
+def learnBasicLogging():
+    """
+    import logging
+    by default logging will happen only for level 
+    Warning and above this changed  by basicConfig()
+    basicConfig() will be called only once
+    and any subsequent call will not have any effect
+    By default log output is appended to the recent output content of file
+
+    This can be controlled by filemode argument. if we do not specify
+    it will be append mode
+    """
+    # use basicConfig to configure logging
+    logging.basicConfig(level=logging.DEBUG,
+                        filename="output.log", filemode="w")
+     # Try out each of the log levels
+    logging.debug("This is a debug-level log message")
+    logging.info("This is an info-level log message")
+    logging.warning("This is a warning-level message")
+    logging.error("This is an error-level message")
+    logging.critical("This is a critical-level message")
+
+    # Output formatted string to the log
+    logging.info("Here's a {} variable and an int: {}".format("string", 10))
+
+
 
     
 
@@ -502,6 +529,9 @@ if __name__ == "__main__":
     # learnStringReprOfObjects()
     # learnComputedAttr()
     # learnObjectOps()
-    learnComparisonOps()
+    # learnComparisonOps()
+    learnBasicLogging()
+
+
 
 
