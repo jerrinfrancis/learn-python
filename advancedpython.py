@@ -443,6 +443,38 @@ def learnObjectOps():
 
     p1 += p2
     print(p1)
+class Employee():
+    def __init__(self, fname, lname, level, yrsService):
+        self.fname = fname
+        self.lname = lname
+        self.level = level
+        self.seniority = yrsService
+    def __ge__(self, other):
+        return self.level >= other.level
+    def __gt__(self, other):
+        return self.level > other.level
+    def __lt__(self, other):
+        return self.level < other.level
+    def __le__(self, other):
+        return self.level <= other.level
+
+
+def learnComparisonOps():
+    # define some employees
+    dept = []
+    dept.append(Employee("Tim", "Sims", 5, 9))
+    dept.append(Employee("John", "Doe", 4, 12))
+    dept.append(Employee("Jane", "Smith", 6, 6))
+    dept.append(Employee("Rebecca", "Robinson", 5, 13))
+    dept.append(Employee("Tyler", "Durden", 5, 12))
+    # who is more senior
+    print(dept[0]>dept[1])
+    print(dept[4]<dept[3])
+
+    # sorted uses these methods to sor
+    emps = sorted(dept)
+    for emp in emps:
+        print(emp.lname)
 
 
 
@@ -469,6 +501,7 @@ if __name__ == "__main__":
     # learnEnum()
     # learnStringReprOfObjects()
     # learnComputedAttr()
-    learnObjectOps()
+    # learnObjectOps()
+    learnComparisonOps()
 
 
