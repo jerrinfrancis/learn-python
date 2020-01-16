@@ -1,8 +1,11 @@
 from string import Template
 import itertools
 import collections
+import string
 from collections import defaultdict
 from collections import Counter
+from collections import OrderedDict
+
 from enum import Enum, unique, auto
 import logging
 def stringsandbytes():
@@ -321,6 +324,77 @@ def learnCounter():
     print(c1.most_common(3))
     # find common between 2 classes
     print(c1 & c2)
+def learnOrderedDict():
+    """
+    downside of dictionary is that it is does not track of 
+    any order of items .
+    from collections import OrderedDict
+
+    orderedDict remembers order in which items are inserted
+    """
+     # list of sport teams with wins and losses
+    sportTeams = [("Royals", (18, 12)), ("Rockets", (24, 6)), 
+                ("Cardinals", (20, 10)), ("Dragons", (22, 8)),
+                ("Kings", (15, 15)), ("Chargers", (20, 10)), 
+                ("Jets", (16, 14)), ("Warriors", (25, 5))]
+    # sort
+    sportTeams = sorted(sportTeams, key=lambda t: t[1][0], reverse=True)
+    # create an ordered dictionary of the teams
+    teams = OrderedDict(sportTeams)
+    print(teams)
+    # note: orderdDict maintains the order in which teams where 
+    # inserted
+    # OrderedDict wont keep data sorted you have to do it
+    # manually
+    # Use popitem to remove the top item
+    tm, wl = teams.popitem(False)
+    print(f'Top team : {tm} {wl}')
+    # you can iterate over teams
+    for i, team in enumerate(teams, start=1):
+        print(i, team)
+        if i == 4:
+            break
+    # test for equality
+    # order has to be same for two orderdDict to be same
+    # incase of regular dict order does not matter 
+    a = OrderedDict({"a": 1, "b": 2, "c": 3})
+    b = OrderedDict({"a": 1, "c": 3, "b": 2})
+    print("Equality test: ", a == b)
+
+def learnDeque():
+    """
+    deque is sort of hybrid object between stack and queue
+    it is Double ended queue pronounce as deck
+    you can use them to append or pop data from either side
+    and they are designed to be memory efficient
+
+    deque can be initialized to empty or to an existing 
+    iterable object and can specify maximum length
+
+    rotate() : positive number will rotate to right and 
+    negative to left
+    """
+    # intialize a deque
+    d = collections.deque(string.ascii_lowercase)
+    # deque support len 
+    print(f'Item Count : {str(len(d))}')
+    # support iteration
+    for elem in d:
+        print(elem.upper(), end=",")
+    # pop, append
+    print(d)
+    d.pop()
+    print(d)
+    d.popleft()
+    print(d)
+    d.append(2)
+    print(d)
+    d.appendleft(10)
+    print(d)
+    # rotate
+    print(d)
+    d.rotate(10)
+    print(d)
 @unique
 class Fruit(Enum):
     """
@@ -584,6 +658,8 @@ if __name__ == "__main__":
     # namedTuple()
     # learndefdict()
     # learnCounter()
+    # learnOrderedDict()
+    # learnDeque()
     # learnEnum()
     # learnStringReprOfObjects()
     # learnComputedAttr()
