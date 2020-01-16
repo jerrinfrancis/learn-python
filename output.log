@@ -1,0 +1,3 @@
+01/05/2020 07:19:26 PM: INFO: learnCustomLogging Line:519 User:joem@example.com This is an info-level log message
+01/05/2020 07:19:26 PM: WARNING: learnCustomLogging Line:520 User:joem@example.com This is a warning-level message
+01/05/2020 07:19:26 PM: DEBUG: anotherFunction Line:508 User:joem@example.com This is a debug-level log message
