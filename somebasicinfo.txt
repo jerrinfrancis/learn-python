@@ -1,0 +1,78 @@
+keyword id
+id() --> python generates a unique id for all objects
+dir() --> gives all attributes of objects
+IS --> var1 is var2 returns True if they have same id
+mutable and Immutable
+list is mutable
+string is Immutable
+
+Import <module> 
+from <module> import <function>
+beware of name conflicts
+assign a differnnt name 
+Import <module>  as <aliaa>
+
+
+package is a collection of modules
+import urllib.request as request
+path 
+urllib.__path__ ( this attribute is not there for a module)
+
+
+list.append() --> appends at last
+list.insert(index, item)
+list.index(item)
+list.remove(item)
+
+
+TUPLES
+is Immutable
+
+
+Queues are generally used in producer-consumer achitecture
+import queue  --> queue is not inbuilt
+queue.Queue(maxSize=10) --> if not given infinite queue
+q.put()
+q.empty()
+q.full()
+q.get() --> returns the oldest item and also get is blocking
+meaning if there are no item it waits until something is added
+q.put()is also blocking for queue with maxsize
+if there is no space..system waits for space in queue
+Blocking works well with threads and processes
+ in which queue waits for shared info
+ if no blocking needed
+ get(False)/get_nowait() put(False)/put_nowait()
+
+
+ use list to implement stack ()
+
+stack = list()
+stack.append()
+stack.pop() --> throws error if no items
+
+
+sets
+------
+No ranking or order to sets
+
+.union() --> will have unique items it will delete duplicate
+len(set) --> length of set
+set1.union(set2, set3)
+
+.intersection() A interse-ction B
+.difference() similar to A-B
+.symmetric_difference()
+.add()
+.remove() --> cannot remove that dont exist
+.pop() --> it is random and throws error id set is empty
+
+
+Dictionaries
+key value pairs
+
+dict = {}
+dict['key'] to access an objects, error if key does not exist
+hash() --> hashes the key
+dict['key'] = item  --> addes to the key the value
+only one key in Dictionaries
