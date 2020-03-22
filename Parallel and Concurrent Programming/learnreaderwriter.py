@@ -7,7 +7,7 @@ from readerwriterlock import rwlock
 WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 today = 0
 marker = rwlock.RWLockFair()
-
+# tesin
 def calendar_reader(id_number):
     global today
     read_marker = marker.gen_rlock()
